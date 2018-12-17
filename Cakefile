@@ -3,7 +3,7 @@ fs = require('fs')
 require('coffee-script/register')
 
 run = (args, cb) ->
-  proc =         spawn './node_modules/.bin/coffee', args
+  proc =         spawn 'coffee.cmd', args
   proc.stderr.on 'data', (buffer) -> console.log buffer.toString()
   proc.on        'exit', (status) ->
     process.exit(1) if status != 0

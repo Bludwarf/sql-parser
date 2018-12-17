@@ -91,7 +91,11 @@ class Lexer
     @tokenizeFromWord('ROWS') or
     @tokenizeFromWord('ONLY') or
     @tokenizeFromWord('NEXT') or
-    @tokenizeFromWord('FIRST')
+    @tokenizeFromWord('FIRST') or
+    @tokenizeFromWord('NULL') or
+    @tokenizeFromWord('INSERT') or
+    @tokenizeFromWord('INTO') or
+    @tokenizeFromWord('VALUES')
 
   dotToken: -> @tokenizeFromWord('DOT', '.')
   operatorToken:    -> @tokenizeFromList('OPERATOR', SQL_OPERATORS)
@@ -130,7 +134,7 @@ class Lexer
   whitespaceToken: ->
     return 0 unless match = WHITESPACE.exec(@chunk)
     partMatch = match[0]
-    newlines = partMatch.replace(/[^\n]/, '').length
+    newlines = partMatch.replace(/[^\n]/g, '').length
     @currentLine += newlines
     @token(name, partMatch) if @preserveWhitespace
     return partMatch.length

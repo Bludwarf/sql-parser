@@ -19,6 +19,15 @@ To build from source you'll need to run the following from the root of the proje
 Tests are written using Mocha and can be run with...
 
     npm test
+    
+Windows
+-------
+
+Change Cakefile :
+
+```
+spawn 'coffee.cmd', args
+```
 
 
 Lexer
